@@ -45,7 +45,7 @@ void loop()
         {
             if (new_position <= 1024)
             {
-                while (position != 0) 
+                while (position != 0)
                 {
                     myStepper.step(-step);
                     if (position < 0)
@@ -58,7 +58,7 @@ void loop()
             }
             else
             {
-                while (position != 0) 
+                while (position != 0)
                 {
                     myStepper.step(step);
                     position += step;
@@ -71,7 +71,7 @@ void loop()
         {
             if (new_position <= -1024)
             {
-                while (position != 0) 
+                while (position != 0)
                 {
                     myStepper.step(-step);
                     position -= step;
@@ -81,7 +81,7 @@ void loop()
             }
             else
             {
-                while (position != 0) 
+                while (position != 0)
                 {
                     myStepper.step(step);
                     if (position < 0)
