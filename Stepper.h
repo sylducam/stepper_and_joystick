@@ -34,9 +34,9 @@
  * reduced from 4 to 2 for the unipolar and bipolar motors.
  *
  * A slightly modified circuit around a Darlington transistor array or an
- * L293 H-bridge connects to only 2 microcontroler pins, inverts the signals
+ * L293 H-bridge connects to only 2 microcontroller pins, inverts the signals
  * received, and delivers the 4 (2 plus 2 inverted ones) output signals
- * required for driving a stepper motor. Similarly the Arduino motor shields
+ * required for driving a stepper motor. Similarly the Arduino motor shield's
  * 2 direction pins may be used.
  *
  * The sequence of control signals for 5 phase, 5 control wires is as follows:
@@ -61,7 +61,7 @@
  *    3  0  1  0  1
  *    4  1  0  0  1
  *
- * The sequence of controls signals for 2 control wires is as follows
+ * The sequence of control signals for 2 control wires is as follows
  * (columns C1 and C2 from above):
  *
  * Step C0 C1
@@ -72,7 +72,7 @@
  *
  * The circuits can be found at
  *
- * http://www.arduino.cc/en/Tutorial/Stepper
+ * https://docs.arduino.cc/learn/electronics/stepper-motors#circuit
  */
 
 // ensure this library description is only included once
@@ -80,42 +80,42 @@
 #define Stepper_h
 
 // library interface description
-class Stepper {
-  public:
-    // constructors:
-    Stepper(int number_of_steps, int motor_pin_1, int motor_pin_2);
-    Stepper(int number_of_steps, int motor_pin_1, int motor_pin_2,
-                                 int motor_pin_3, int motor_pin_4);
-    Stepper(int number_of_steps, int motor_pin_1, int motor_pin_2,
-                                 int motor_pin_3, int motor_pin_4,
-                                 int motor_pin_5);
+class Stepper
+{
+public:
+	// constructors:
+	Stepper(int number_of_steps, int motor_pin_1, int motor_pin_2);
+	Stepper(int number_of_steps, int motor_pin_1, int motor_pin_2,
+			int motor_pin_3, int motor_pin_4);
+	Stepper(int number_of_steps, int motor_pin_1, int motor_pin_2,
+			int motor_pin_3, int motor_pin_4,
+			int motor_pin_5);
 
-    // speed setter method:
-    void setSpeed(long whatSpeed);
+	// speed setter method:
+	void setSpeed(long whatSpeed);
 
-    // mover method:
-    void step(int number_of_steps);
+	// mover method:
+	void step(int number_of_steps);
 
-    int version(void);
+	int version(void);
 
-  private:
-    void stepMotor(int this_step);
+private:
+	void stepMotor(int this_step);
 
-    int direction;            // Direction of rotation
-    unsigned long step_delay; // delay between steps, in ms, based on speed
-    int number_of_steps;      // total number of steps this motor can take
-    int pin_count;            // how many pins are in use.
-    int step_number;          // which step the motor is on
+	int direction;			  // Direction of rotation
+	unsigned long step_delay; // delay between steps, in us, based on speed
+	int number_of_steps;	  // total number of steps this motor can take
+	int pin_count;			  // how many pins are in use.
+	int step_number;		  // which step the motor is on
 
-    // motor pin numbers:
-    int motor_pin_1;
-    int motor_pin_2;
-    int motor_pin_3;
-    int motor_pin_4;
-    int motor_pin_5;          // Only 5 phase motor
+	// motor pin numbers:
+	int motor_pin_1;
+	int motor_pin_2;
+	int motor_pin_3;
+	int motor_pin_4;
+	int motor_pin_5; // Only 5 phase motor
 
-    unsigned long last_step_time; // time stamp in us of when the last step was taken
+	unsigned long last_step_time; // timestamp in us of when the last step was taken
 };
 
 #endif
-

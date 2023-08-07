@@ -1,5 +1,5 @@
 {
     "board": "arduino:avr:uno",
-    "sketch": "code.ino",
+    "sketch": "stepper_and_joystick.ino",
     "port": "/dev/tty.usbmodem14201"
 }
